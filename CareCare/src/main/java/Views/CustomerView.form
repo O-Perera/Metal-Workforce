@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="377" height="400"/>
+      <xy x="20" y="20" width="439" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -16,71 +16,71 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="d3c75" class="javax.swing.JLabel">
+          <component id="d3c75" class="javax.swing.JLabel" binding="lblId">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="Enter Employee ID"/>
             </properties>
           </component>
-          <component id="2fc65" class="javax.swing.JLabel">
+          <component id="2fc65" class="javax.swing.JLabel" binding="lblName">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="Enter Customer Name"/>
             </properties>
           </component>
-          <component id="2484" class="javax.swing.JLabel">
+          <component id="2484" class="javax.swing.JLabel" binding="lblEmail">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="Enter Customer Email"/>
             </properties>
           </component>
-          <component id="ec65d" class="javax.swing.JLabel">
+          <component id="ec65d" class="javax.swing.JLabel" binding="lblAddress">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="Enter Customer Address"/>
             </properties>
           </component>
-          <component id="60a3f" class="javax.swing.JLabel">
+          <component id="60a3f" class="javax.swing.JLabel" binding="lblContact">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="Enter Customer Contact"/>
             </properties>
           </component>
-          <component id="9867b" class="javax.swing.JLabel">
+          <component id="9867b" class="javax.swing.JLabel" binding="lblService">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <text value="Enter Service"/>
             </properties>
           </component>
-          <component id="4b837" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="4b837" class="javax.swing.JButton" binding="btnDelete">
             <constraints>
               <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <text value="DELETE"/>
             </properties>
           </component>
-          <component id="444f2" class="javax.swing.JButton" binding="button2" default-binding="true">
+          <component id="444f2" class="javax.swing.JButton" binding="btnAdd">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <text value="ADD"/>
             </properties>
           </component>
-          <component id="eaa83" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="eaa83" class="javax.swing.JTextField" binding="txtId">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -88,15 +88,15 @@
             </constraints>
             <properties/>
           </component>
-          <component id="1baba" class="javax.swing.JButton" binding="button3" default-binding="true">
+          <component id="1baba" class="javax.swing.JButton" binding="btnUpdate">
             <constraints>
               <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <text value="UPDATE"/>
             </properties>
           </component>
-          <component id="f7709" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="f7709" class="javax.swing.JTextField" binding="txtName">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -104,7 +104,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="5c224" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="5c224" class="javax.swing.JTextField" binding="txtEmail">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -112,7 +112,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="bad4a" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="bad4a" class="javax.swing.JTextField" binding="txtAddress">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -120,7 +120,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="c676" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+          <component id="c676" class="javax.swing.JTextField" binding="txtContact">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -128,7 +128,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="3e549" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+          <component id="3e549" class="javax.swing.JTextField" binding="txtService">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
