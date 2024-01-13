@@ -2,7 +2,7 @@ package Views;
 
 import javax.swing.*;
 
-public class CustomerView {
+public class CustomerView extends JFrame {
     private JPanel panel1;
     private JTextField txtId;
     private JButton btnDelete;
@@ -19,4 +19,14 @@ public class CustomerView {
     private JLabel lblEmail;
     private JLabel lblName;
     private JLabel lblId;
+    private JPanel backPanel;
+
+    public static void main(String[] args) {
+        CustomerView customerview=new CustomerView();
+        customerview.setContentPane(customerview.backPanel);
+        customerview.setTitle("Rider Application");
+        customerview.setSize(600,600);
+        customerview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        customerview.setVisible(true);
+    }
 }
