@@ -1,1 +1,1 @@
-//your controller java files do in this pkg
+//your model java files do in this pkg
