@@ -41,7 +41,7 @@ public class supplierview  extends JFrame{
      supplier supplierobj;
 
     // suppliercontrol controller;
-    ArrayList<supplier> supplierList;
+   public ArrayList<supplier> supplierList;
     suppliercontrol controller = new suppliercontrol();
 
 
@@ -79,12 +79,12 @@ public class supplierview  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     int supplierID = Integer.parseInt(txtIDU.getText());
-                    String name = txtnameu.getText();
-                    String address = txtaddressu.getText();
-                    String email = txtemailu.getText();
-                    int phone_number = Integer.parseInt(txtphonenumberu.getText());
+                    String newName = txtnameu.getText();
+                    String newAddress = txtaddressu.getText();
+                    String newEmail = txtemailu.getText();
+                    int newPhone_number = Integer.parseInt(txtphonenumberu.getText());
 
-                   // supplierobj = controller.updateSupplier(supplierIDToUpdate, newName, newAddress, newEmail, newPhoneNumber);
+                    supplierobj = controller.updateSupplier(supplierID,newName,newAddress,newEmail,newPhone_number);
                     JOptionPane.showMessageDialog(panel1, "Supplier details updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                  }catch(NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panel1, "Invalid input for Supplier ID or Phone Number", "Error", JOptionPane.ERROR_MESSAGE);

@@ -105,6 +105,8 @@ public class supplier {
         return "supplier {" + "SupplierID= " + supplierID + "/" + "SupplierID= " + supplierID + "/" + "Name= " + name + "/" + "Address= " + address + "/" + "Email= " + email + "/" + "Phone Number= " + phone_number + "/";
 
     }
+
+
 }
 
 
