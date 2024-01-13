@@ -44,10 +44,6 @@ public class GmailerEmployeeController {
 
     }
 
-    public static void main(String[] args) {
-        new GMailer().sendMail("subject", "message");
 
-
-    }
 
 }
