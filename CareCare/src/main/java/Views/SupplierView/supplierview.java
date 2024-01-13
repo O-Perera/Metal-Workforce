@@ -35,13 +35,13 @@ public class supplierview  extends JFrame{
     private JTextField txtphonenumberu;
     private JTextField txtemailu;
     private JLabel lbldelete;
-    private JButton button1;
+    private JButton btndelete;
     private JLabel lblIDD;
-    private JTextField textField6;
-     supplier supplierobj;
+    private JTextField txtdelete;
+    supplier supplierobj;
 
     // suppliercontrol controller;
-   public ArrayList<supplier> supplierList;
+    public ArrayList<supplier> supplierList;
     suppliercontrol controller = new suppliercontrol();
 
 
@@ -92,25 +92,39 @@ public class supplierview  extends JFrame{
 
                     supplierobj = controller.updateSupplier(supplierID,newName,newAddress,newEmail,newPhone_number);
                     JOptionPane.showMessageDialog(panel1, "Supplier details updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                 }catch(NumberFormatException ex) {
+                }catch(NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panel1, "Invalid input for Supplier ID or Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
 
                 }
-                }
+            }
 
-            });
-        }
+        });
+        btndelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    int supplierID = Integer.parseInt(txtdelete.getText());
+                    supplierobj  = controller.supplierDelete(supplierID);
+                    JOptionPane.showMessageDialog(panel1, "Delete Successfully", "Success", 0);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(panel1, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+                }
+            }
+        });
+    }
 
 
     public static void main(String[] args) {
         supplierview supview=new supplierview();
-            supview.setContentPane(supview.panel1);
-            supview.setTitle("supplier application");
-            supview.setSize(600,600);
-            supview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            supview.setVisible(true);
-        }
-
-        
+        supview.setContentPane(supview.panel1);
+        supview.setTitle("supplier application");
+        supview.setSize(600,600);
+        supview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        supview.setVisible(true);
     }
+
+
+}
+
+
 

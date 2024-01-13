@@ -68,6 +68,10 @@ public class supplier {
         this.phone_number = phone_number;
     }
 
+    public supplier() {
+        this.supplierID = 0;
+    }
+
     public String getNewName() {
         return newName;
     }

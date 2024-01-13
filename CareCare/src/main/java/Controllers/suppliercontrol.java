@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Customer;
 import Models.supplier;
 import Views.SupplierView.supplierview;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class suppliercontrol {
-    private List<supplier> supplierList;
+     private List<supplier> supplierList;
 
     public suppliercontrol() {
         // Initialize the supplier list
@@ -16,9 +17,10 @@ public class suppliercontrol {
 
     public supplier addsupplier(int supplierID, String name, String address, String email, int phone_number) {
         supplier supplierobj = new supplier(supplierID, name, address, email, phone_number);
-        supplierList.add(supplierobj);  // Add the new supplier to the list
+        //supplierList.add(supplierobj);  // Add the new supplier to the list
         return supplierobj;
     }
+
 
     public supplier updateSupplier(int supplierID, String newName, String newAddress, String newEmail, int newPhoneNumber) {
         for (supplier i : supplierList) {
@@ -32,6 +34,7 @@ public class suppliercontrol {
         }
         return null;  // Return null if the supplier with the specified ID was not found
     }
+
 
     public List<supplier> getSupplierList() {
         return supplierList;
@@ -52,6 +55,10 @@ public class suppliercontrol {
         for (supplier s : updatedList) {
             System.out.println(s);
         }
+    }
+    public supplier supplierDelete(int supplier){
+        supplier supplierobj  = new supplier();
+        return supplierobj ;
     }
 }
 
