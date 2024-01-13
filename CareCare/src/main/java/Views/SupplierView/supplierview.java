@@ -1,4 +1,4 @@
-package Views.SupplierView;
+package Views.supplierView;
 import Models.supplier;
 import Controllers.suppliercontrol;
 
@@ -66,18 +66,31 @@ public class supplierview  extends JFrame{
                     int supplierID = Integer.parseInt(txtIDValue);
                     int phone_number = Integer.parseInt(txtPhoneNumberValue);
 
-                    // Open connection here
-                    // SQL statement to insert
+                    // Print the values for debugging
+                    System.out.println("Supplier ID: " + supplierID);
+                    System.out.println("Name: " + name);
+                    System.out.println("Address: " + address);
+                    System.out.println("Email: " + email);
+                    System.out.println("Phone Number: " + phone_number);
+
+                    // Call the controller to add the supplier
                     supplierobj = controller.addsupplier(supplierID, name, address, email, phone_number);
-                    supplierList.add(supplierobj);
-                    JOptionPane.showMessageDialog(panel1, "Supplier details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                    if (supplierobj != null) {
+                        // If the controller successfully added the supplier
+                        supplierList.add(supplierobj);
+                        JOptionPane.showMessageDialog(panel1, "Supplier details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        // If the controller returned null, there might be an issue
+                        JOptionPane.showMessageDialog(panel1, "Failed to add supplier. Check logs for details.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panel1, "Invalid input for Supplier ID or Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
                 } catch (Exception ex) {
+                    // Print the exception details for debugging
+                    ex.printStackTrace();
                     JOptionPane.showMessageDialog(panel1, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
-
-
             }
         });
         btnupdate.addActionListener(new ActionListener() {

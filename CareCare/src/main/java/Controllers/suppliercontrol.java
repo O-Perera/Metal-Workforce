@@ -2,17 +2,19 @@ package Controllers;
 
 import Models.Customer;
 import Models.supplier;
-import Views.SupplierView.supplierview;
+import ServiceLayer.SupplierService;
+import Views.supplierView.supplierview;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class suppliercontrol {
-     private List<supplier> supplierList;
+    private List<supplier> supplierList;
+    private SupplierService supplierService; // Add a reference to the service layer
 
     public suppliercontrol() {
-        // Initialize the supplier list
         supplierList = new ArrayList<>();
+        supplierService = new SupplierService(); // Initialize the service layer
     }
 
     public supplier addsupplier(int supplierID, String name, String address, String email, int phone_number) {
@@ -23,13 +25,21 @@ public class suppliercontrol {
 
 
     public supplier updateSupplier(int supplierID, String newName, String newAddress, String newEmail, int newPhoneNumber) {
-        for (supplier i : supplierList) {
-            if (i.getSupplierID() == supplierID) {
-                i.setName(newName);
-                i.setAddress(newAddress);
-                i.setEmail(newEmail);
-                i.setPhone_number(newPhoneNumber);
-                return i;
+        // Assuming supplierList is used for temporary storage and not directly updating the database
+        for (supplier s : supplierList) {
+            if (s.getSupplierID() == supplierID) {
+                s.setName(newName);
+                s.setAddress(newAddress);
+                s.setEmail(newEmail);
+                s.setPhone_number(newPhoneNumber);
+                boolean success = supplierService.updateSupplier(supplierID, newName, newAddress, newEmail, newPhoneNumber);
+
+                if (success) {
+                    return s; // Return the updated supplier
+                } else {
+                    // Handle update failure (e.g., log error, show message to user)
+                    return null;
+                }
             }
         }
         return null;  // Return null if the supplier with the specified ID was not found
