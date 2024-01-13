@@ -1,7 +1,7 @@
 package Controllers;
 
 import Models.supplier;
-import Views.supplierView.supplierview;
+import Views.SupplierView.supplierview;
 
 import java.util.ArrayList;
 import java.util.List;

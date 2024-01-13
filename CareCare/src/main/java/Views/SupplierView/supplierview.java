@@ -1,4 +1,4 @@
-package Views.supplierView;
+package Views.SupplierView;
 import Models.supplier;
 import Controllers.suppliercontrol;
 
