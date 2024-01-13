@@ -2,7 +2,7 @@ package Views;
 
 import javax.swing.*;
 
-public class supplierView {
+public class supplierview {
     private JPanel panel1;
     private JLabel lblID;
     private JTextField txtID;
@@ -32,4 +32,8 @@ public class supplierView {
     private JButton button1;
     private JLabel lblIDD;
     private JTextField textField6;
+
+    public static void main(String[] args) {
+
+    }
 }
