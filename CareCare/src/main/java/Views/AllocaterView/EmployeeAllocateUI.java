@@ -62,17 +62,18 @@ public class EmployeeAllocateUI extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                // Instantiate the UI
-                EmployeeAllocateUI employeeAllocateUI = new EmployeeAllocateUI();
+                // Instantiate the controller
+                EmployeeAllocateController controller = new EmployeeAllocateController();
 
-                // Instantiate the controller and pass the UI instance to it
-                EmployeeAllocateController controller = new EmployeeAllocateController(employeeAllocateUI);
+                // Instantiate the UI with the controller
+                EmployeeAllocateUI employeeAllocateUI = new EmployeeAllocateUI(controller);
 
                 // Set the UI visible
                 employeeAllocateUI.setVisible(true);
             }
         });
     }
+
 
 
 

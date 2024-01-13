@@ -5,7 +5,7 @@ import Views.AllocaterView.EmployeeAllocateUI;
 public class EmployeeAllocateController {
     private EmployeeAllocateUI view;
 
-    public EmployeeAllocateController(EmployeeAllocateUI view) {
+    public EmployeeAllocateController() {
         this.view = view;
 
         // Add any additional initialization or logic for the controller
