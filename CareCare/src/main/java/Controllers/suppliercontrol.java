@@ -7,4 +7,8 @@ public class suppliercontrol {
         return supplierobj;
         
     }
+    /*public supplier updateSupplier(int supplierID, String newName, String newAddress,  String newEmail,int newPhoneNumber){
+
+    }*/
+
 }
