@@ -13,4 +13,35 @@ public class Notification {
         this.status = status;
     }
 
+    public int getCustomerId() {
+        return CustomerId;
+    }
+
+    public int getOrderId() {
+        return OrderId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setCustomerId(int customerId) {
+        CustomerId = customerId;
+    }
+
+    public void setOrderId(int orderId) {
+        OrderId = orderId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }
