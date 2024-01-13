@@ -1,4 +1,4 @@
-package Views.SupplierView;
+package Views.supplierView;
 import Models.supplier;
 import Controllers.suppliercontrol;
 
@@ -51,25 +51,31 @@ public class supplierview  extends JFrame{
         btnadd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              try{
-                    int supplierID =Integer.parseInt(txtID.getText());
-                    String name=txtname.getText();
-                    String address=txtAddress.getText();
-                    String  email =txtEmail.getText();
-                    int phone_number=Integer.parseInt(txtPhonenumber.getText());
+                try {
+                    String txtIDValue = txtID.getText().trim();
+                    String name = txtname.getText().trim();
+                    String address = txtAddress.getText().trim();
+                    String email = txtEmail.getText().trim();
+                    String txtPhoneNumberValue = txtPhonenumber.getText().trim();
 
-                      //open connection here
-                      //sql statement to insert
-                      supplierobj= controller.addsupplier(supplierID,name,address,email,phone_number);
-                      supplierList.add(supplierobj);
-                      JOptionPane.showMessageDialog(panel1,"supplier details added succesfully ", "Success",2);
+                    if (txtIDValue.isEmpty() || name.isEmpty() || address.isEmpty() || email.isEmpty() || txtPhoneNumberValue.isEmpty()) {
+                        JOptionPane.showMessageDialog(panel1, "Please fill in all the fields", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
 
+                    int supplierID = Integer.parseInt(txtIDValue);
+                    int phone_number = Integer.parseInt(txtPhoneNumberValue);
 
+                    // Open connection here
+                    // SQL statement to insert
+                    supplierobj = controller.addsupplier(supplierID, name, address, email, phone_number);
+                    supplierList.add(supplierobj);
+                    JOptionPane.showMessageDialog(panel1, "Supplier details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(panel1, "Invalid input for Supplier ID or Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(panel1, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                  catch (NumberFormatException ex) {
-                      JOptionPane.showMessageDialog(panel1, "Invalid input for Supplier ID or Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
-
-                  }
 
 
             }
