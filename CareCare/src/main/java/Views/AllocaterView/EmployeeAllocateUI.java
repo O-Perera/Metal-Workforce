@@ -16,6 +16,17 @@ public class EmployeeAllocateUI extends JFrame {
     private JComboBox<String> jobComboBox;
     private JButton allocateButton;
     private EmployeeAllocateController controller;
+    private JPanel panel1;
+    private JButton AddButton;
+    private JTextField txtAreaName;
+    private JTextField txtAreaEmail;
+    private JButton UpdateButton;
+    private JButton DeleteButton;
+    private JLabel txtAdd;
+    private JLabel txtName;
+    private JLabel txtEmail;
+    private JLabel txtUpdate;
+    private JLabel txtDelete;
 
     public EmployeeAllocateUI(EmployeeAllocateController controller) {
         this.controller = controller;
