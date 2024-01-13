@@ -7,7 +7,12 @@ import java.util.ArrayList;
 
 public class CustomerController {
 
-    public Customer customerNew(int empId, String name, String email,String address,int contact, String service){
+    public Customer customerAdd(int empId, String name, String email,String address,int contact, String service){
+        Customer updateObj =new Customer();
+        return updateObj;
+    }
+
+    public Customer customerUpdate(int empId, String name, String email,String address,int contact, String service,int orderId){
         Customer updateObj =new Customer();
         return updateObj;
     }

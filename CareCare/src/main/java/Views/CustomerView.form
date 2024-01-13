@@ -66,7 +66,7 @@
           </component>
           <component id="eaa83" class="javax.swing.JTextField" binding="txtId">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -74,7 +74,7 @@
           </component>
           <component id="f7709" class="javax.swing.JTextField" binding="txtName">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -82,7 +82,7 @@
           </component>
           <component id="5c224" class="javax.swing.JTextField" binding="txtEmail">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -90,7 +90,7 @@
           </component>
           <component id="bad4a" class="javax.swing.JTextField" binding="txtAddress">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -98,7 +98,7 @@
           </component>
           <component id="c676" class="javax.swing.JTextField" binding="txtContact">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -106,27 +106,11 @@
           </component>
           <component id="3e549" class="javax.swing.JTextField" binding="txtService">
             <constraints>
-              <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties/>
-          </component>
-          <component id="444f2" class="javax.swing.JButton" binding="btnAdd">
-            <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="ADD"/>
-            </properties>
-          </component>
-          <component id="1baba" class="javax.swing.JButton" binding="btnUpdate">
-            <constraints>
-              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="UPDATE"/>
-            </properties>
           </component>
           <component id="4b837" class="javax.swing.JButton" binding="btnDelete">
             <constraints>
@@ -138,7 +122,7 @@
           </component>
           <component id="c9dfc" class="javax.swing.JTextField" binding="txtOrder">
             <constraints>
-              <grid row="7" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -150,6 +134,22 @@
             </constraints>
             <properties>
               <text value="Enter Order ID"/>
+            </properties>
+          </component>
+          <component id="1baba" class="javax.swing.JButton" binding="btnUpdate">
+            <constraints>
+              <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="UPDATE"/>
+            </properties>
+          </component>
+          <component id="444f2" class="javax.swing.JButton" binding="btnAdd">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="ADD"/>
             </properties>
           </component>
         </children>

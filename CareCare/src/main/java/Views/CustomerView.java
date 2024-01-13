@@ -44,12 +44,14 @@ public class CustomerView extends JFrame {
                     int contact = Integer.parseInt(txtContact.getText());
                     String service = txtService.getText();
 
-                    customer = controller.customerNew(empId, name, email, address, contact, service);
+                    customer = controller.customerAdd(empId, name, email, address, contact, service);
 
                     JOptionPane.showMessageDialog(backPanel, "Added Successfully", "Success", 0);
                 }catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
 
+                }catch(RuntimeException rx){
+                    JOptionPane.showMessageDialog(backPanel, "Fields Should not be empty", "Success", 0);
                 }
 
 
@@ -65,13 +67,16 @@ public class CustomerView extends JFrame {
                     String address = txtAddress.getText();
                     int contact = Integer.parseInt(txtContact.getText());
                     String service = txtService.getText();
+                    int orderId = Integer.parseInt(txtOrder.getText());
 
-                    customer = controller.customerNew(empId, name, email, address, contact, service);
+                    customer = controller.customerUpdate(empId, name, email, address, contact, service,orderId);
 
                     JOptionPane.showMessageDialog(backPanel, "Updated Successfully", "Success", 0);
 
                 }catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+                }catch(RuntimeException rx){
+                    JOptionPane.showMessageDialog(backPanel, "Fields Should not be empty", "Success", 0);
                 }
 
 
@@ -88,7 +93,7 @@ public class CustomerView extends JFrame {
                     JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
                 }
 
-    
+
                 }
         });
     }

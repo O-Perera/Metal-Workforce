@@ -16,6 +16,17 @@ public class EmployeeAllocateUI extends JFrame {
     private JComboBox<String> jobComboBox;
     private JButton allocateButton;
     private EmployeeAllocateController controller;
+    private JPanel panel1;
+    private JButton AddButton;
+    private JTextField txtAreaName;
+    private JTextField txtAreaEmail;
+    private JButton UpdateButton;
+    private JButton DeleteButton;
+    private JLabel txtAdd;
+    private JLabel txtName;
+    private JLabel txtEmail;
+    private JLabel txtUpdate;
+    private JLabel txtDelete;
 
     public EmployeeAllocateUI(EmployeeAllocateController controller) {
         this.controller = controller;
@@ -62,17 +73,18 @@ public class EmployeeAllocateUI extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                // Instantiate the controller
-                EmployeeAllocateController controller = new EmployeeAllocateController();
+                // Instantiate the UI
+                EmployeeAllocateUI employeeAllocateUI = new EmployeeAllocateUI();
 
-                // Instantiate the UI with the controller
-                EmployeeAllocateUI employeeAllocateUI = new EmployeeAllocateUI(controller);
+                // Instantiate the controller and pass the UI instance to it
+                EmployeeAllocateController controller = new EmployeeAllocateController(employeeAllocateUI);
 
                 // Set the UI visible
                 employeeAllocateUI.setVisible(true);
             }
         });
     }
+
 
 
 
