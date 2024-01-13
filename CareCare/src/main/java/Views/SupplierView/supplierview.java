@@ -1,4 +1,4 @@
-package Views.SupplierView;
+package Views.supplierView;
 
 import javax.swing.*;
 
