@@ -2,7 +2,7 @@ package Views.SupplierView;
 
 import javax.swing.*;
 
-public class supplierview {
+public class supplierview  extends JFrame{
     private JPanel panel1;
     private JLabel lblID;
     private JTextField txtID;
@@ -34,6 +34,12 @@ public class supplierview {
     private JTextField textField6;
 
     public static void main(String[] args) {
-
+        supplierview supview=new supplierview();
+            supview.setContentPane(supview.panel1);
+            supview.setTitle("supplier application");
+            supview.setSize(600,600);
+            supview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            supview.setVisible(true);
+        }
     }
-}
+
