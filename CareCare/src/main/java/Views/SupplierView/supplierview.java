@@ -1,6 +1,14 @@
-package Views.supplierView;
+package Views.SupplierView;
+import Models.supplier;
+import Controllers.suppliercontrol;
+import java.sql.*;
+
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.function.Supplier;
+import java.util.ArrayList;
 
 public class supplierview  extends JFrame{
     private JPanel panel1;
@@ -32,8 +40,41 @@ public class supplierview  extends JFrame{
     private JButton button1;
     private JLabel lblIDD;
     private JTextField textField6;
+     supplier supplierobj;
+
+     suppliercontrol controller;
+    ArrayList<supplier> supplierList;
 
 
+    public supplierview() {
+        supplierList= new ArrayList<>();
+
+        btnadd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                    int supplierID =Integer.parseInt(txtID.getText());
+                    String name=txtname.getText();
+                    String address=txtAddress.getText();
+                    String  email =txtEmail.getText();
+                    int phone_number=Integer.parseInt(txtPhonenumber.getText());
+                  try{
+                      //open connection here
+                      //sql statement to insert
+                      supplierobj=controller.addsupplier(supplierID,name,address,email,phone_number);
+                      supplierList.add(supplierobj);
+
+
+                }
+                catch( Exception e1   ){
+
+
+                }
+
+
+            }
+        });
+    }
 
     public static void main(String[] args) {
         supplierview supview=new supplierview();
