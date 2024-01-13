@@ -7,6 +7,19 @@ public class supplier {
     private String email;
     private int phone_number;
 
+
+    private String newName;
+    private String   newAddress;
+    private String newEmail;
+    private int newPhoneNumber;
+
+    public supplier(String newName, String newAddress, String newEmail, int newPhoneNumber) {
+        this.newName = newName;
+        this.newAddress = newAddress;
+        this.newEmail = newEmail;
+        this.newPhoneNumber = newPhoneNumber;
+    }
+
     public int getSupplierID() {
         return supplierID;
     }
@@ -53,6 +66,38 @@ public class supplier {
         this.address = address;
         this.email = email;
         this.phone_number = phone_number;
+    }
+
+    public String getNewName() {
+        return newName;
+    }
+
+    public void setNewName(String newName) {
+        this.newName = newName;
+    }
+
+    public String getNewAddress() {
+        return newAddress;
+    }
+
+    public void setNewAddress(String newAddress) {
+        this.newAddress = newAddress;
+    }
+
+    public String getNewEmail() {
+        return newEmail;
+    }
+
+    public void setNewEmail(String newEmail) {
+        this.newEmail = newEmail;
+    }
+
+    public int getNewPhoneNumber() {
+        return newPhoneNumber;
+    }
+
+    public void setNewPhoneNumber(int newPhoneNumber) {
+        this.newPhoneNumber = newPhoneNumber;
     }
 
     //to add supplier
