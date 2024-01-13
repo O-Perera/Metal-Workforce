@@ -1,6 +1,11 @@
 package Views;
 
+import Models.Customer;
+import Controllers.CustomerController;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CustomerView extends JFrame {
     private JPanel panel1;
@@ -20,6 +25,73 @@ public class CustomerView extends JFrame {
     private JLabel lblName;
     private JLabel lblId;
     private JPanel backPanel;
+    private JLabel lblOrder;
+    private JTextField txtOrder;
+
+    Customer customer;
+    CustomerController controller = new CustomerController();
+
+    public CustomerView() {
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    int empId = Integer.parseInt(txtId.getText());
+                    String name = txtName.getText();
+                    String email = txtEmail.getText();
+                    String address = txtAddress.getText();
+                    int contact = Integer.parseInt(txtContact.getText());
+                    String service = txtService.getText();
+
+                    customer = controller.customerNew(empId, name, email, address, contact, service);
+
+                    JOptionPane.showMessageDialog(backPanel, "Added Successfully", "Success", 0);
+                }catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+
+                }
+
+
+            }
+        });
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int empId = Integer.parseInt(txtId.getText());
+                    String name = txtName.getText();
+                    String email = txtEmail.getText();
+                    String address = txtAddress.getText();
+                    int contact = Integer.parseInt(txtContact.getText());
+                    String service = txtService.getText();
+
+                    customer = controller.customerNew(empId, name, email, address, contact, service);
+
+                    JOptionPane.showMessageDialog(backPanel, "Updated Successfully", "Success", 0);
+
+                }catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+                }
+
+
+            }
+        });
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    int orderId = Integer.parseInt(txtOrder.getText());
+                    customer = controller.customerDelete(orderId);
+                    JOptionPane.showMessageDialog(backPanel, "Delete Successfully", "Success", 0);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+                }
+
+    
+                }
+        });
+    }
 
     public static void main(String[] args) {
         CustomerView customerview=new CustomerView();

@@ -8,13 +8,26 @@ public class Customer {
     private int contact;
     private String service;
 
-    public Customer(int empId, String name, String email, String address, int contact, String service) {
+    private int orderId;
+
+    public Customer(int empId, String name, String email, String address, int contact, String service, int orderId) {
         this.empId = empId;
         this.name = name;
         this.email = email;
         this.address = address;
         this.contact = contact;
         this.service = service;
+        this.orderId = orderId;
+    }
+
+    public Customer(){
+        this.empId = 0;
+        this.name = null;
+        this.email = null;
+        this.address = null;
+        this.contact = 0;
+        this.service = null;
+        this.orderId = 0;
     }
 
     public int getEmpId() {
@@ -63,6 +76,14 @@ public class Customer {
 
     public void setService(String service) {
         this.service = service;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 }
 
