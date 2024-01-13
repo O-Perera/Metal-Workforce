@@ -44,6 +44,6 @@ public class supplierview  extends JFrame{
             supview.setVisible(true);
         }
 
-        
+
     }
 
