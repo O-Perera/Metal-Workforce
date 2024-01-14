@@ -24,7 +24,7 @@ public class CustomerService {
 
     public boolean updateCustomer(Customer customer){
         try{
-            String updateQuery = "UPDATE orders set empID = "+customer.getEmpId()+" , Name = '"+customer.getName()+"', Email = '"+customer.getEmail()+"', Address ='"+customer.getAddress()+"',Contact="+customer.getContact()+", Service = '"+customer.getService()+"' WHERE orderID="+customer.getOrderId()+")";
+            String updateQuery = "update orders set empID = "+customer.getEmpId()+" , Name = '"+customer.getName()+"', Email = '"+customer.getEmail()+"', Address ='"+customer.getAddress()+"',Contact="+customer.getContact()+", Service = '"+customer.getService()+"' WHERE orderID="+customer.getOrderId()+" ";
             boolean result= singleConn.ExecuteQuery(updateQuery);
             return result;
 
@@ -37,7 +37,7 @@ public class CustomerService {
 
     public boolean deleteCustomer(Customer customer){
         try{
-            String deleteQuery = "DELETE FROM orders WHERE orderID="+customer.getOrderId()+")";
+            String deleteQuery = "DELETE FROM orders WHERE orderID="+customer.getOrderId()+"";
             boolean result= singleConn.ExecuteQuery(deleteQuery);
             return result;
 

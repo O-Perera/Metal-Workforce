@@ -46,7 +46,7 @@ public class  CustomerView extends JFrame {
 
                     customer = controller.customerAdd(empId, name, email, address, contact, service);
 
-                    if(controller.addCustomerToDatabase()){
+                    if(controller.addCustomerToDatabase(customer)){
                         JOptionPane.showMessageDialog(backPanel, "Added Successfully", "Success", 0);
 
                     }else{
@@ -74,7 +74,7 @@ public class  CustomerView extends JFrame {
 
                     customer = controller.customerUpdate(empId, name, email, address, contact, service,orderId);
 
-                    if(controller.UpdateCustomerInDatabase()){
+                    if(controller.UpdateCustomerInDatabase(customer)){
                         JOptionPane.showMessageDialog(backPanel, "Updated Successfully", "Success", 0);
                     }else{
                         JOptionPane.showMessageDialog(backPanel, "Cannot Update Customer", "unsuccessful", 0);
@@ -93,7 +93,7 @@ public class  CustomerView extends JFrame {
                     int orderId = Integer.parseInt(txtOrder.getText());
                     customer = controller.customerDelete(orderId);
 
-                    if(controller.deleteCustomerFromDatabase()){
+                    if(controller.deleteCustomerFromDatabase(customer)){
                         JOptionPane.showMessageDialog(backPanel, "Delete Successfully", "Success", 0);
                     }else{
                         JOptionPane.showMessageDialog(backPanel, "Delete unsuccessfully", "unsuccessful", 0);
