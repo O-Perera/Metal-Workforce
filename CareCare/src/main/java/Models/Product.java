@@ -1,6 +1,6 @@
 package Models;
 
-public class InsertProduct {
+public class Product {
 
 
         private int prodID;
@@ -16,24 +16,24 @@ public class InsertProduct {
         private String suppCode;
         private String custCode;
 
-        public InsertProduct (int prodID, int quantity, int userID, double costPrice, double sellPrice,
-                       Double totalCost, Double totalRevenue, String prodCode, String prodName,
-                       String date, String suppCode, String custCode) {
-            this.prodID = prodID;
-            this.quantity = quantity;
-            this.userID = userID;
-            this.costPrice = costPrice;
-            this.sellPrice = sellPrice;
-            this.totalCost = totalCost;
-            this.totalRevenue = totalRevenue;
-            this.prodCode = prodCode;
-            this.prodName = prodName;
-            this.date = date;
-            this.suppCode = suppCode;
-            this.custCode = custCode;
-        }
+    public Product(int prodID, int quantity, int userID, double costPrice, double sellPrice,
+                   Double totalCost, Double totalRevenue, String prodCode, String prodName,
+                   String date, String suppCode, String custCode) {
+        this.prodID = prodID;
+        this.quantity = quantity;
+        this.userID = userID;
+        this.costPrice = costPrice;
+        this.sellPrice = sellPrice;
+        this.totalCost = totalCost;
+        this.totalRevenue = totalRevenue;
+        this.prodCode = prodCode;
+        this.prodName = prodName;
+        this.date = date;
+        this.suppCode = suppCode;
+        this.custCode = custCode;
+    }
 
-        // Getters and Setters for all fields
+    // Getters and Setters for all fields
 
         public int getProdID() {
             return prodID;
