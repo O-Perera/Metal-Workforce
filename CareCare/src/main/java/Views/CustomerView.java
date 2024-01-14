@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CustomerView extends JFrame {
+public class  CustomerView extends JFrame {
     private JPanel panel1;
     private JTextField txtId;
     private JButton btnDelete;
@@ -46,12 +46,15 @@ public class CustomerView extends JFrame {
 
                     customer = controller.customerAdd(empId, name, email, address, contact, service);
 
-                    JOptionPane.showMessageDialog(backPanel, "Added Successfully", "Success", 0);
-                }catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+                    if(controller.addCustomerToDatabase()){
+                        JOptionPane.showMessageDialog(backPanel, "Added Successfully", "Success", 0);
 
-                }catch(RuntimeException rx){
-                    JOptionPane.showMessageDialog(backPanel, "Fields Should not be empty", "Success", 0);
+                    }else{
+                        JOptionPane.showMessageDialog(backPanel, "Cannot Insert Customer", "unsuccessful", 0);
+                    }
+                }catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "unsuccessful", 0);
+
                 }
 
 
@@ -71,12 +74,13 @@ public class CustomerView extends JFrame {
 
                     customer = controller.customerUpdate(empId, name, email, address, contact, service,orderId);
 
-                    JOptionPane.showMessageDialog(backPanel, "Updated Successfully", "Success", 0);
-
+                    if(controller.UpdateCustomerInDatabase()){
+                        JOptionPane.showMessageDialog(backPanel, "Updated Successfully", "Success", 0);
+                    }else{
+                        JOptionPane.showMessageDialog(backPanel, "Cannot Update Customer", "unsuccessful", 0);
+                    }
                 }catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
-                }catch(RuntimeException rx){
-                    JOptionPane.showMessageDialog(backPanel, "Fields Should not be empty", "Success", 0);
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "unsuccessful", 0);
                 }
 
 
@@ -88,7 +92,14 @@ public class CustomerView extends JFrame {
                 try{
                     int orderId = Integer.parseInt(txtOrder.getText());
                     customer = controller.customerDelete(orderId);
-                    JOptionPane.showMessageDialog(backPanel, "Delete Successfully", "Success", 0);
+
+                    if(controller.deleteCustomerFromDatabase()){
+                        JOptionPane.showMessageDialog(backPanel, "Delete Successfully", "Success", 0);
+                    }else{
+                        JOptionPane.showMessageDialog(backPanel, "Delete unsuccessfully", "unsuccessful", 0);
+                    }
+
+
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
                 }
