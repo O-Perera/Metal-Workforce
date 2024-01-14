@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class dbconnection {
 
-    private final String URL = "jdbc:mysql://localhost:3306/CareCare?serverTimezone=UTC";
+    private final String URL = "jdbc:mysql://localhost:3306/CareCare";
     private final String UName = "root";
     private final String Password = "";
     private static dbconnection instance;
