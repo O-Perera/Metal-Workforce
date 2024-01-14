@@ -27,7 +27,7 @@ import java.util.*;
 
 public class CustomerEmail {
 
-    private static final String TEST_EMAIL = "dmsperera7@gmail.com";
+    private static final String TEST_EMAIL = "hirunidinoshi@gmail.com";
     private final Gmail service;
 
     public CustomerEmail() throws Exception {
@@ -99,10 +99,11 @@ public class CustomerEmail {
 
     public static void main(String[] args) throws Exception {
         new GmailerEmployeeController().sendMail("A new message", """
-                Dear Employee,
+                Dear Customer,
                 
-                You have been successfully Assigned
-                to the order to work on it,
+                Your car is ready to be collected.
+                
+           
                 
                 Best Regards,
                 CareCare Team
