@@ -11,7 +11,7 @@ public class CustomerService {
 
     public boolean addCustomer(Customer customer){
         try{
-            String addQuery = "insert into order values("+customer.getEmpId()+",'"+customer.getName()+"','"+customer.getEmail()+"','"+customer.getAddress()+"',"+customer.getContact()+",'"+customer.getService()+"')";
+            String addQuery = "insert into orders (empID,Name,Email,Address,Contact,Service) values("+customer.getEmpId()+",'"+customer.getName()+"','"+customer.getEmail()+"','"+customer.getAddress()+"',"+customer.getContact()+",'"+customer.getService()+"')";
             boolean result= singleConn.ExecuteQuery(addQuery);
             return result;
 
@@ -24,7 +24,7 @@ public class CustomerService {
 
     public boolean updateCustomer(Customer customer){
         try{
-            String updateQuery = "UPDATE order set empId = "+customer.getEmpId()+" , name = '"+customer.getName()+"', email = '"+customer.getEmail()+"', address ='"+customer.getAddress()+"',contact="+customer.getContact()+", service = '"+customer.getService()+"' WHERE orderid="+customer.getOrderId()+")";
+            String updateQuery = "UPDATE orders set empID = "+customer.getEmpId()+" , Name = '"+customer.getName()+"', Email = '"+customer.getEmail()+"', Address ='"+customer.getAddress()+"',Contact="+customer.getContact()+", Service = '"+customer.getService()+"' WHERE orderID="+customer.getOrderId()+")";
             boolean result= singleConn.ExecuteQuery(updateQuery);
             return result;
 
@@ -37,7 +37,7 @@ public class CustomerService {
 
     public boolean deleteCustomer(Customer customer){
         try{
-            String deleteQuery = "DELETE FROM order WHERE orderid="+customer.getOrderId()+")";
+            String deleteQuery = "DELETE FROM orders WHERE orderID="+customer.getOrderId()+")";
             boolean result= singleConn.ExecuteQuery(deleteQuery);
             return result;
 
