@@ -1,9 +1,7 @@
 package Controllers;
 
-import Models.Customer;
 import Models.supplier;
 import ServiceLayer.SupplierService;
-import Views.supplierView.supplierview;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,34 +15,44 @@ public class suppliercontrol {
         supplierService = new SupplierService(); // Initialize the service layer
     }
 
-    public supplier addsupplier(int supplierID, String name, String address, String email, int phone_number) {
+    public boolean addsupplier(int supplierID, String name, String address, String email, int phone_number) {
         supplier supplierobj = new supplier(supplierID, name, address, email, phone_number);
-        //supplierList.add(supplierobj);  // Add the new supplier to the list
-        return supplierobj;
-    }
 
+        // Call the service layer to add the supplier to the database
+        boolean success = supplierService.addSupplier(supplierobj);
+
+        if (success) {
+            // If the supplier is successfully added to the database, you might want to update your local list
+            supplierList.add(supplierobj);
+        }
+
+        return success;
+    }
 
     public supplier updateSupplier(int supplierID, String newName, String newAddress, String newEmail, int newPhoneNumber) {
-        // Assuming supplierList is used for temporary storage and not directly updating the database
-        for (supplier s : supplierList) {
-            if (s.getSupplierID() == supplierID) {
-                s.setName(newName);
-                s.setAddress(newAddress);
-                s.setEmail(newEmail);
-                s.setPhone_number(newPhoneNumber);
-                boolean success = supplierService.updateSupplier(supplierID, newName, newAddress, newEmail, newPhoneNumber);
+        // Call the service layer to update the supplier in the database
+        boolean success = supplierService.updateSupplier(supplierID, newName, newAddress, newEmail, newPhoneNumber);
 
-                if (success) {
-                    return s; // Return the updated supplier
-                } else {
-                    // Handle update failure (e.g., log error, show message to user)
-                    return null;
-                }
-            }
+        if (success) {
+            // Return the updated supplier received from the service layer
+            return supplierService.getSupplierById(supplierID);
+        } else {
+            // Handle update failure (e.g., log error, show message to user)
+            return null;
         }
-        return null;  // Return null if the supplier with the specified ID was not found
     }
 
+    public boolean supplierDelete(int supplierID) {
+        // Call the service layer to delete the supplier from the database
+        boolean success = supplierService.deleteSupplier(supplierID);
+
+        if (success) {
+            // Remove the supplier from the local list if deletion was successful
+            supplierList.removeIf(supplier -> supplier.getSupplierID() == supplierID);
+        }
+
+        return success;
+    }
 
     public List<supplier> getSupplierList() {
         return supplierList;
@@ -55,7 +63,7 @@ public class suppliercontrol {
         suppliercontrol controller = new suppliercontrol();
 
         // Adding a new supplier
-        supplier newSupplier = controller.addsupplier(1, "Supplier1", "Address1", "supplier1@example.com", 123456789);
+        boolean newSupplier = controller.addsupplier(1, "Supplier1", "Address1", "supplier1@example.com", 123456789);
 
         // Updating a supplier
         supplier updatedSupplier = controller.updateSupplier(1, "NewName", "NewAddress", "newemail@example.com", 987654321);
@@ -65,10 +73,13 @@ public class suppliercontrol {
         for (supplier s : updatedList) {
             System.out.println(s);
         }
-    }
-    public supplier supplierDelete(int supplier){
-        supplier supplierobj  = new supplier();
-        return supplierobj ;
+
+        // Deleting a supplier
+        boolean deleteSuccess = controller.supplierDelete(1);
+        if (deleteSuccess) {
+            System.out.println("Supplier deleted successfully.");
+        } else {
+            System.out.println("Failed to delete supplier.");
+        }
     }
 }
-

@@ -1,4 +1,4 @@
-package Views.supplierView;
+package Views.SupplierView;
 import Models.supplier;
 import Controllers.suppliercontrol;
 
@@ -42,54 +42,31 @@ public class supplierview  extends JFrame{
 
     // suppliercontrol controller;
     public ArrayList<supplier> supplierList;
-    suppliercontrol controller = new suppliercontrol();
-
+    private suppliercontrol controller = new suppliercontrol();
 
     public supplierview() {
-        supplierList= new ArrayList<>();
-
         btnadd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String txtIDValue = txtID.getText().trim();
-                    String name = txtname.getText().trim();
-                    String address = txtAddress.getText().trim();
-                    String email = txtEmail.getText().trim();
-                    String txtPhoneNumberValue = txtPhonenumber.getText().trim();
+                    int supplierID = Integer.parseInt(txtID.getText());
+                    String name = txtname.getText();
+                    String address = txtAddress.getText();
+                    String email = txtEmail.getText();
+                    int phone_number = Integer.parseInt(txtPhonenumber.getText());
 
-                    if (txtIDValue.isEmpty() || name.isEmpty() || address.isEmpty() || email.isEmpty() || txtPhoneNumberValue.isEmpty()) {
-                        JOptionPane.showMessageDialog(panel1, "Please fill in all the fields", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
+                    supplier supplierobj = new supplier(supplierID, name, address, email, phone_number);
 
-                    int supplierID = Integer.parseInt(txtIDValue);
-                    int phone_number = Integer.parseInt(txtPhoneNumberValue);
+                    // Call the controller to add the supplier to the database
+                    boolean success = controller.addsupplier(supplierID, name, address, email, phone_number);
 
-                    // Print the values for debugging
-                    System.out.println("Supplier ID: " + supplierID);
-                    System.out.println("Name: " + name);
-                    System.out.println("Address: " + address);
-                    System.out.println("Email: " + email);
-                    System.out.println("Phone Number: " + phone_number);
-
-                    // Call the controller to add the supplier
-                    supplierobj = controller.addsupplier(supplierID, name, address, email, phone_number);
-
-                    if (supplierobj != null) {
-                        // If the controller successfully added the supplier
-                        supplierList.add(supplierobj);
+                    if (success) {
                         JOptionPane.showMessageDialog(panel1, "Supplier details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        // If the controller returned null, there might be an issue
-                        JOptionPane.showMessageDialog(panel1, "Failed to add supplier. Check logs for details.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(panel1, "Failed to add supplier to the database", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panel1, "Invalid input for Supplier ID or Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
-                } catch (Exception ex) {
-                    // Print the exception details for debugging
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(panel1, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -115,15 +92,23 @@ public class supplierview  extends JFrame{
         btndelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
+                try {
                     int supplierID = Integer.parseInt(txtdelete.getText());
-                    supplierobj  = controller.supplierDelete(supplierID);
-                    JOptionPane.showMessageDialog(panel1, "Delete Successfully", "Success", 0);
-                }catch(NumberFormatException ex){
-                    JOptionPane.showMessageDialog(panel1, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+
+                    // Call the controller to delete the supplier
+                    boolean deleteSuccess = controller.supplierDelete(supplierID);
+
+                    if (deleteSuccess) {
+                        JOptionPane.showMessageDialog(panel1, "Delete Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(panel1, "Failed to delete supplier", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(panel1, "Invalid Supplier ID", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
     }
 
 

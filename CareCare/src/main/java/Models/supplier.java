@@ -13,12 +13,13 @@ public class supplier {
     private String newEmail;
     private int newPhoneNumber;
 
-    public supplier(String newName, String newAddress, String newEmail, int newPhoneNumber) {
-        this.newName = newName;
-        this.newAddress = newAddress;
-        this.newEmail = newEmail;
-        this.newPhoneNumber = newPhoneNumber;
+    public supplier(String name, String address, String email, int phone_number) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone_number = phone_number;
     }
+
 
     public int getSupplierID() {
         return supplierID;
