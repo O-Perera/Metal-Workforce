@@ -112,7 +112,7 @@ public class  CustomerView extends JFrame {
     public static void main(String[] args) {
         CustomerView customerview=new CustomerView();
         customerview.setContentPane(customerview.backPanel);
-        customerview.setTitle("Rider Application");
+        customerview.setTitle("Customer Application");
         customerview.setSize(600,600);
         customerview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         customerview.setVisible(true);
