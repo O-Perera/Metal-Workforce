@@ -33,7 +33,7 @@ public class DashboardView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 CustomerView customerview=new CustomerView();
                 customerview.setContentPane(customerview.backPanel);
-                customerview.setTitle("Rider Application");
+                customerview.setTitle("Customer Application");
                 customerview.setSize(600,600);
                 customerview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 customerview.setVisible(true);
