@@ -107,7 +107,7 @@ public class productService {
 
     public Product getProductById(int prodID) {
         try {
-            String query = "SELECT * FROM product WHERE prodID=?";
+            String query = "SELECT * FROM products WHERE prodID=?";
             System.out.println("Executing query: " + query);
 
             try (PreparedStatement statement = singleConn.getConnection().prepareStatement(query)) {
@@ -146,7 +146,7 @@ public class productService {
         List<Product> productList = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM product";
+            String query = "SELECT * FROM products";
             System.out.println("Executing query: " + query);
 
             try (PreparedStatement statement = singleConn.getConnection().prepareStatement(query);
