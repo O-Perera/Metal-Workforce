@@ -4,6 +4,7 @@ import Controllers.EmployeeAllocateController;
 import Controllers.GmailerEmployeeController;
 import Views.AllocaterView.EmployeeAllocateUI;
 import Views.CustomerView;
+import Views.Employee.EmployeeView;
 import Views.SupplierView.supplierview;
 import Views.inventoryManagementView.inventoryView;
 
@@ -67,6 +68,12 @@ public class DashboardView extends JFrame {
         Employeebtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                EmployeeView empview=new EmployeeView();
+                empview.setContentPane(empview.backpanel);
+                empview.setTitle("Customer Application");
+                empview.setSize(600,600);
+                empview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                empview.setVisible(true);
 
             }
         });

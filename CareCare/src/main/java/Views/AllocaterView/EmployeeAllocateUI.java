@@ -7,6 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class EmployeeAllocateUI extends JFrame {
     private EmployeeAllocateController controller;
@@ -77,7 +82,6 @@ public class EmployeeAllocateUI extends JFrame {
             }
         });
 
-        // Add the panel to the frame
         add(panelemp);
     }
 
@@ -85,12 +89,12 @@ public class EmployeeAllocateUI extends JFrame {
         String employeeID = txtempid.getText();
         String orderID = txtorderid.getText();
 
-        // Call the controller method to get employee name and handle the allocation logic with both values
         String employeeName = controller.getEmployeeNameById(employeeID);
         controller.handleEmployeeAllocation(employeeID, orderID);
 
-        // Use the injected instance of GmailerEmployeeController to send the email
-        sendEmail("You've Been Assigned a New Task!",
+        String employeeEmail = getEmailFromDatabase(employeeID);
+
+        sendEmail(employeeEmail, "You've Been Assigned a New Task",
                 "Dear " + employeeName + ",\n\n" +
                         "Congratulations! We're happy to inform you that you have been successfully assigned to a new task:\n" +
                         "\n" +
@@ -107,9 +111,34 @@ public class EmployeeAllocateUI extends JFrame {
                         "CareCare Team");
     }
 
-    private void sendEmail(String subject, String message) {
+    private String getEmailFromDatabase(String employeeID) {
+        try {
+            // Assuming you have a database connection
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CareCare", "root", "");
+
+            // Prepare the SQL query
+            String query = "SELECT email FROM emptable WHERE empId = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, employeeID);
+
+                // Execute the query
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getString("email");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception as needed
+        }
+        return null; // Return null if no email is found (handle it accordingly)
+    }
+
+    private void sendEmail(String employeeEmail, String subject, String message) {
         try {
             // Use the injected instance of GmailerEmployeeController
+            emailController.setTestEmail(employeeEmail); // Set the email dynamically
             emailController.sendMail(subject, message);
         } catch (Exception ex) {
             ex.printStackTrace();

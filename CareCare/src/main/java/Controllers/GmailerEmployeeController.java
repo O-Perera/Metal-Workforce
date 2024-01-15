@@ -1,4 +1,5 @@
 package Controllers;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -16,28 +17,30 @@ import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Message;
 import org.apache.commons.codec.binary.Base64;
 
-
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
-import java.util.*;
+import java.util.Properties;
+import java.util.Set;
 
 public class GmailerEmployeeController {
 
-    private static final String TEST_EMAIL = "dmsperera7@gmail.com";
+    private String testEmail; // Add a non-static field
     private final Gmail service;
 
     public GmailerEmployeeController() throws Exception {
-
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
         service = new Gmail.Builder(httpTransport, jsonFactory, getCredentials(httpTransport, jsonFactory))
                 .setApplicationName("Test Mailer")
                 .build();
+    }
 
+    public void setTestEmail(String testEmail) {
+        this.testEmail = testEmail;
     }
 
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
@@ -56,49 +59,51 @@ public class GmailerEmployeeController {
         //returns an authorized Credential object.
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
-    public void sendMail(String subject, String message) throws Exception{
-        {
 
+    public void sendMail(String subject, String message) throws Exception {
+        // Create the email content
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+        MimeMessage email = new MimeMessage(session);
 
-            // Create the email content
+        // Use the dynamic email (testEmail) instead of the static one
+        email.setFrom(new InternetAddress(testEmail));
+        email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(testEmail));
+        email.setSubject(subject);
+        email.setText(message);
 
+        // Encode and wrap the MIME message into a gmail message
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        email.writeTo(buffer);
+        byte[] rawMessageBytes = buffer.toByteArray();
+        String encodedEmail = Base64.encodeBase64URLSafeString(rawMessageBytes);
+        Message msg = new Message();
+        msg.setRaw(encodedEmail);
 
-            // Encode as MIME message
-            Properties props = new Properties();
-            Session session = Session.getDefaultInstance(props, null);
-            MimeMessage email = new MimeMessage(session);
-            email.setFrom(new InternetAddress(TEST_EMAIL));
-            email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(TEST_EMAIL));
-            email.setSubject(subject);
-            email.setText(message);
-
-            // Encode and wrap the MIME message into a gmail message
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-            email.writeTo(buffer);
-            byte[] rawMessageBytes = buffer.toByteArray();
-            String encodedEmail = Base64.encodeBase64URLSafeString(rawMessageBytes);
-            Message msg = new Message();
-            msg.setRaw(encodedEmail);
-
-            try {
-                // Create send message
-                msg = service.users().messages().send("me", msg).execute();
-                System.out.println("Message id: " + msg.getId());
-                System.out.println(msg.toPrettyString());
-            } catch (GoogleJsonResponseException e) {
-                GoogleJsonError error = e.getDetails();
-                if (error.getCode() == 403) {
-                    System.err.println("Unable to send message: " + e.getDetails());
-                } else {
-                    throw e;
-                }
+        try {
+            // Create send message
+            msg = service.users().messages().send("me", msg).execute();
+            System.out.println("Message id: " + msg.getId());
+            System.out.println(msg.toPrettyString());
+        } catch (GoogleJsonResponseException e) {
+            GoogleJsonError error = e.getDetails();
+            if (error.getCode() == 403) {
+                System.err.println("Unable to send message: " + e.getDetails());
+            } else {
+                throw e;
             }
-
         }
     }
 
     public static void main(String[] args) throws Exception {
-        new GmailerEmployeeController().sendMail("A new message", """
+        // Instantiate the controller
+        GmailerEmployeeController emailController = new GmailerEmployeeController();
+
+        // Set the test email (for testing purposes)
+        emailController.setTestEmail("dmsperera7@gmail.com");
+
+        // Send a test email
+        emailController.sendMail("A new message", """
                 Dear Employee,
                 
                 You have been successfully Assigned
@@ -107,8 +112,5 @@ public class GmailerEmployeeController {
                 Best Regards,
                 CareCare Team
                 """);
-
-
     }
 }
-

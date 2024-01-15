@@ -1,9 +1,6 @@
 package DBlayer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class dbconnection {
 
@@ -19,11 +16,10 @@ public class dbconnection {
             con = DriverManager.getConnection(URL, UName, Password);
             System.out.println("Database Connection Success");
         } catch (ClassNotFoundException | SQLException ex) {
-        ex.printStackTrace();
-        System.out.println("Error in database connection: " + ex.getMessage());
+            ex.printStackTrace();
+            System.out.println("Error in database connection: " + ex.getMessage());
+        }
     }
-
-}
 
     public static dbconnection getSingleInstance() {
         try {
@@ -53,6 +49,17 @@ public class dbconnection {
         }
     }
 
+    public PreparedStatement getPreparedStatement(String sql) throws SQLException {
+        return con.prepareStatement(sql);
+    }
 
+    public boolean ExecutePreparedStatement(PreparedStatement preparedStatement) {
+        try {
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
-
