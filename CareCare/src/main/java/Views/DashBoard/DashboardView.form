@@ -5,7 +5,9 @@
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1739520"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="3635e" class="javax.swing.JButton" binding="Customerorderbtn">
@@ -13,6 +15,8 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-9444379"/>
+          <foreground color="-1744269"/>
           <text value="Customer order"/>
         </properties>
       </component>
@@ -21,6 +25,8 @@
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-9444379"/>
+          <foreground color="-1744269"/>
           <text value="Employees"/>
         </properties>
       </component>
@@ -29,6 +35,8 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-9444379"/>
+          <foreground color="-1744269"/>
           <text value="Suppliers"/>
         </properties>
       </component>
@@ -37,6 +45,8 @@
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-9444379"/>
+          <foreground color="-1744269"/>
           <text value="Employee allocating"/>
         </properties>
       </component>
@@ -45,6 +55,8 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-9444379"/>
+          <foreground color="-1744269"/>
           <text value="Inventory"/>
         </properties>
       </component>
@@ -53,15 +65,19 @@
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-9444379"/>
+          <foreground color="-1744269"/>
           <text value="Monthly Report"/>
         </properties>
       </component>
       <component id="e06c4" class="javax.swing.JLabel" binding="lblcarecare">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <foreground color="-16777216"/>
           <text value="Welcome to Carecare"/>
+          <verticalAlignment value="0"/>
         </properties>
       </component>
     </children>

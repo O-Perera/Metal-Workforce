@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 
 
 public class inventoryView extends JFrame{
-    private JPanel panel1;
+    public JPanel panel1;
     private JTable table1;
     private JTextField txtQty;
     private JTextField txtUID;
