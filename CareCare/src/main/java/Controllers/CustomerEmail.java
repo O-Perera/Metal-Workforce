@@ -27,7 +27,7 @@ import java.util.*;
 
 public class CustomerEmail {
 
-   private static final String TEST_EMAIL = "hirunidinoshi@gmail.com";
+   private static final String TEST_EMAIL = "helakuru03@gmail.com";
     private final Gmail service;
 
     public CustomerEmail() throws Exception {
