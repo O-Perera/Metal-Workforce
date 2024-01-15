@@ -1,9 +1,10 @@
 package ServiceLayer;
 
-import Models.supplier;
 import DBlayer.dbconnection;
+import Models.supplier;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class SupplierService {
     private dbconnection singleConn;
@@ -18,10 +19,8 @@ public class SupplierService {
         }
     }
 
-
     public boolean addSupplier(supplier Supplier) {
         try {
-            // Use a prepared statement to avoid SQL injection
             String query = "INSERT INTO supplier VALUES (?, ?, ?, ?, ?)";
             System.out.println("Executing query: " + query);
 
@@ -45,13 +44,10 @@ public class SupplierService {
         }
     }
 
-
-
-
     public boolean updateSupplier(int supplierID, String newName, String newAddress, String newEmail, int newPhoneNumber) {
         try {
-            // Use a prepared statement to avoid SQL injection
             String query = "UPDATE supplier SET name=?, address=?, email=?, phone_number=? WHERE supplierID=?";
+            System.out.println("Executing query: " + query);
 
             try (PreparedStatement statement = singleConn.getConnection().prepareStatement(query)) {
                 statement.setString(1, newName);
@@ -62,6 +58,8 @@ public class SupplierService {
 
                 int rowsAffected = statement.executeUpdate();
 
+                System.out.println("Rows affected: " + rowsAffected);
+
                 return rowsAffected > 0;
             }
         } catch (Exception ex) {
@@ -70,5 +68,53 @@ public class SupplierService {
             return false;
         }
     }
-}
 
+    public supplier getSupplierById(int supplierID) {
+        try {
+            String query = "SELECT * FROM supplier WHERE supplierID=?";
+            System.out.println("Executing query: " + query);
+
+            try (PreparedStatement statement = singleConn.getConnection().prepareStatement(query)) {
+                statement.setInt(1, supplierID);
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        int retrievedSupplierID = resultSet.getInt("supplierID");
+                        String name = resultSet.getString("name");
+                        String address = resultSet.getString("address");
+                        String email = resultSet.getString("email");
+                        int phone_number = resultSet.getInt("phone_number");
+
+                        return new supplier(retrievedSupplierID, name, address, email, phone_number);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Error getting supplier by ID");
+        }
+
+        return null;
+    }
+
+    public boolean deleteSupplier(int supplierID) {
+        try {
+            String query = "DELETE FROM supplier WHERE supplierID=?";
+            System.out.println("Executing query: " + query);
+
+            try (PreparedStatement statement = singleConn.getConnection().prepareStatement(query)) {
+                statement.setInt(1, supplierID);
+
+                int rowsAffected = statement.executeUpdate();
+
+                System.out.println("Rows affected: " + rowsAffected);
+
+                return rowsAffected > 0;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Cannot delete supplier");
+            return false;
+        }
+    }
+}

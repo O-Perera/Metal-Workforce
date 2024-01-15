@@ -1,45 +1,68 @@
 package Controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Models.Product;
 import ServiceLayer.productService;
 
 public class productController {
+    private List<Product> productList;
+    private productService productService; // Add a reference to the service layer
 
-    Product productObj;
-    productService service;
-
-    public Product addProduct(int prodID, int quantity, int userID, double costPrice, double sellPrice,
-                           Double totalCost, Double totalRevenue, String prodCode, String prodName,
-                           String date, String suppCode, String custCode) {
-
-        Product addObj = new Product();
-        return addObj;
-
+    public productController() {
+        productList = new ArrayList<>();
+        productService = new productService(); // Initialize the service layer
     }
 
-    public Product updateProduct(Product existingProduct, int newQuantity, double newCostPrice, double newSellPrice,
-                              String newProdName, String newDate, String newSuppCode, String newCustCode) {
+    public boolean addProduct(int prodID, int quantity, int userID, double costPrice, double sellPrice,
+                              Double totalCost, Double totalRevenue, String prodCode, String prodName,
+                              String date, String suppCode, String custCode)
+    {
+        Product product = new Product(prodID, quantity, userID, costPrice, sellPrice, totalCost, totalRevenue,
+                prodCode, prodName, date, suppCode, custCode);
 
-        Product updateObj = new Product();
-        return updateObj;
+        // Call the service layer to add the product to the database
+        boolean success = productService.addProduct(product);
 
+        if (success) {
+            // If the product is successfully added to the database, you might want to update your local list
+            productList.add(product);
+        }
+
+        return success;
     }
 
-    public Product deleteProduct(int prodID){
-        Product deleteObj = new Product();
-        return deleteObj;
+    public Product updateProduct(int prodID, int newQuantity, int newUserID, double newCostPrice, double newSellPrice,
+                                 Double newTotalCost, Double newTotalRevenue, String newProdCode, String newProdName,
+                                 String newDate, String newSuppCode, String newCustCode) {
+        // Call the service layer to update the product in the database
+        boolean success = productService.updateProduct(prodID, newQuantity, newUserID, newCostPrice, newSellPrice,
+                newTotalCost, newTotalRevenue, newProdCode, newProdName,
+                newDate, newSuppCode, newCustCode);
+
+        if (success) {
+            // Return the updated product received from the service layer
+            return productService.getProductById(prodID);
+        } else {
+            // Handle update failure (e.g., log error, show message to user)
+            return null;
+        }
     }
 
-    public boolean addProductToDatabase(){
-        return  service.addProduct(productObj);
+    public boolean deleteProduct(int prodID) {
+        // Call the service layer to delete the product from the database
+        boolean success = productService.deleteProduct(prodID);
+
+        if (success) {
+            // Remove the product from the local list if deletion was successful
+            productList.removeIf(product -> product.getProdID() == prodID);
+        }
+
+        return success;
     }
 
-    public boolean UpdateProductInDatabase(){
-        return  service.updateProduct(productObj);
+    public List<Product> getProductList() {
+        return productList;
     }
-
-    public boolean deleteProductFromDatabase(){
-        return  service.deleteProduct(productObj);
-    }
-
 }

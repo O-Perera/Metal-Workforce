@@ -7,9 +7,17 @@ public class EmployeeAllocate {
     private String job;
 
     // Constructors
+
+    // Constructor for cases with name and email
     public EmployeeAllocate(String name, String email, String employee, String job) {
         this.name = name;
         this.email = email;
+        this.employee = employee;
+        this.job = job;
+    }
+
+    // Constructor for cases without name and email
+    public EmployeeAllocate(String employee, String job) {
         this.employee = employee;
         this.job = job;
     }
