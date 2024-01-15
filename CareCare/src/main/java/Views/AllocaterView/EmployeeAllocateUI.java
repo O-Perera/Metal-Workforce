@@ -1,6 +1,7 @@
 package Views.AllocaterView;
 
 import Controllers.EmployeeAllocateController;
+import Controllers.GmailerEmployeeController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 public class EmployeeAllocateUI extends JFrame {
     private EmployeeAllocateController controller;
 
-    private JPanel panel1;
+    public JPanel panel1;
     private JLabel empid;
     private JLabel orderid;
 
@@ -49,7 +50,10 @@ public class EmployeeAllocateUI extends JFrame {
         allocate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 allocateEmployeeToJob();
+
+
             }
         });
 
@@ -63,8 +67,26 @@ public class EmployeeAllocateUI extends JFrame {
 
         // Call the controller method to handle the allocation logic with both values
         controller.handleEmployeeAllocation(employeeID, orderID);
+        sendEmail("A new allocation", "Dear Employee, \nEmployee ID: " + employeeID + "\nOrder ID: " + orderID+"\n" +
+                "\n" +
+                "You have been successfully Assigned\n" +
+                "to the order to work on it,\n" +
+                "\n" +
+                "Best Regards,\n" +
+                "CareCare Team");
 
-        // You can add additional logic here if needed
+
+
+    }
+    private void sendEmail(String subject, String message) {
+        try {
+            // Create an instance of GmailerEmployeeController to send the email
+            GmailerEmployeeController emailController = new GmailerEmployeeController();
+            emailController.sendMail(subject, message);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            // Handle the exception as needed
+        }
     }
 
     public static void main(String[] args) {
