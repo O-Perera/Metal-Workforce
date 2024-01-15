@@ -92,7 +92,7 @@ public class  CustomerView extends JFrame {
                         JOptionPane.showMessageDialog(backPanel, "Cannot Update Customer", "unsuccessful", 0);
                     }
                 }catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "unsuccessful", 0);
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID,Customer ContactNumber or the Order ID", "unsuccessful", 0);
                 }
 
 
@@ -114,7 +114,7 @@ public class  CustomerView extends JFrame {
 
 
                 }catch(NumberFormatException ex){
-                    JOptionPane.showMessageDialog(backPanel, "Invalid Employee ID or the Customer ContactNumber", "Success", 0);
+                    JOptionPane.showMessageDialog(backPanel, "Invalid Order ID", "Success", 0);
                 }
 
 
