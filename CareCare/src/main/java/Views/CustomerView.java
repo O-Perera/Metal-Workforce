@@ -24,7 +24,7 @@ public class  CustomerView extends JFrame {
     private JLabel lblEmail;
     private JLabel lblName;
     private JLabel lblId;
-    private JPanel backPanel;
+    public JPanel backPanel;
     private JLabel lblOrder;
     private JTextField txtOrder;
 

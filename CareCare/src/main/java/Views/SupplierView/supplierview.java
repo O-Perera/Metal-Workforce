@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class supplierview  extends JFrame{
-    private JPanel panel1;
+    public JPanel panel1;
     private JLabel lblID;
     private JTextField txtID;
     private JLabel lblname;
