@@ -12,7 +12,7 @@ public class EmployeeAllocateUI extends JFrame {
     private EmployeeAllocateController controller;
     private GmailerEmployeeController emailController;
 
-    private JPanel panel1;
+    public JPanel panelemp;
     private JLabel empid;
     private JLabel orderid;
 
@@ -31,7 +31,7 @@ public class EmployeeAllocateUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Initialize components
-        panel1 = new JPanel();
+        panelemp = new JPanel();
         empid = new JLabel("Employee ID:");
         orderid = new JLabel("Order ID:");
         txtempid = new JTextField();
@@ -39,15 +39,15 @@ public class EmployeeAllocateUI extends JFrame {
         allocate = new JButton("Allocate");
 
         // Set layout for the panel
-        panel1.setLayout(new GridLayout(3, 2));
+        panelemp.setLayout(new GridLayout(3, 2));
 
         // Add components to the panel
-        panel1.add(empid);
-        panel1.add(txtempid);
-        panel1.add(orderid);
-        panel1.add(txtorderid);
-        panel1.add(new JLabel()); // Empty label for spacing
-        panel1.add(allocate);
+        panelemp.add(empid);
+        panelemp.add(txtempid);
+        panelemp.add(orderid);
+        panelemp.add(txtorderid);
+        panelemp.add(new JLabel()); // Empty label for spacing
+        panelemp.add(allocate);
 
         // Add action listener to the allocate button
         allocate.addActionListener(new ActionListener() {
@@ -58,7 +58,11 @@ public class EmployeeAllocateUI extends JFrame {
         });
 
         // Add the panel to the frame
-        add(panel1);
+        add(panelemp);
+    }
+
+    public EmployeeAllocateUI() {
+
     }
 
     private void allocateEmployeeToJob() {
@@ -80,7 +84,6 @@ public class EmployeeAllocateUI extends JFrame {
                         "-----------\n" +
                         "You have been chosen to contribute your expertise to an exciting project. OrderID: " + orderID+ ". Your dedication and hard work are highly appreciated.\n" +
                         "\n" +
-                        "What's Next:\n" +
                         "----------------\n" +
                         "Get ready to showcase your skills and make a significant impact. Your team is counting on you!\n" +
                         "\n" +

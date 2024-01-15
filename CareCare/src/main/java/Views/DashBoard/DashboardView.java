@@ -1,5 +1,6 @@
 package Views.DashBoard;
 
+import Views.AllocaterView.EmployeeAllocateUI;
 import Views.CustomerView;
 import Views.SupplierView.supplierview;
 
@@ -63,7 +64,12 @@ public class DashboardView extends JFrame {
         allocatingbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                EmployeeAllocateUI empview=new EmployeeAllocateUI();
+                empview.setContentPane(empview.panelemp);
+                empview.setTitle("supplier application");
+                empview.setSize(600,600);
+                empview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                empview.setVisible(true);
 
 
             }
@@ -75,6 +81,12 @@ public class DashboardView extends JFrame {
             }
         });
         reportbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        allocatingbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
