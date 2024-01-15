@@ -1,11 +1,12 @@
 package Controllers.ManageEmployeeView;
 
+import Models.ManageEmployee;
 import Views.ManageEmployeeView.ManageEmployeeView;
 
 public class ManageEmployeeController {
     private ManageEmployeeView view;
 
-    public ManageEmployeeController(ManageEmployeeView view) {
+    public ManageEmployeeController() {
         this.view = view;
 
         // Add any additional initialization or logic for the controller

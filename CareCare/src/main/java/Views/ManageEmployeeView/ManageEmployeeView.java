@@ -1,6 +1,5 @@
 package Views.ManageEmployeeView;
 
-import Controllers.ManageEmployeeController;
 import Models.ManageEmployee;
 
 import javax.swing.*;
@@ -9,14 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ManageEmployeeView extends JFrame {
-    private ManageEmployeeController controller;
+    private Controllers.ManageEmployeeView.ManageEmployeeController controller;
 
     private JTextField txtEmployeeID;
     private JTextField txtName;
     private JTextField txtPosition;
     private JButton btnAddEmployee;
 
-    public ManageEmployeeView(ManageEmployeeController controller) {
+    public ManageEmployeeView(Controllers.ManageEmployeeView.ManageEmployeeController controller) {
         this.controller = controller;
         setTitle("Manage Employees");
         setSize(400, 200);
@@ -66,7 +65,7 @@ public class ManageEmployeeView extends JFrame {
             @Override
             public void run() {
                 // Instantiate the controller
-                ManageEmployeeController controller = new ManageEmployeeController();
+                Controllers.ManageEmployeeView.ManageEmployeeController controller = new Controllers.ManageEmployeeView.ManageEmployeeController();
 
                 // Instantiate the UI and pass the controller instance to it
                 ManageEmployeeView manageEmployeeView = new ManageEmployeeView(controller);
