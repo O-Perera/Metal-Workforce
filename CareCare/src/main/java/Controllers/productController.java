@@ -50,6 +50,16 @@ public class productController {
         }
     }
 
+    public Product getProductById( int id) {
+        try {
+            return productService.getProductById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception and return an appropriate response
+            return null;
+        }
+    }
+
     public boolean deleteProduct(int prodID) {
         // Call the service layer to delete the product from the database
         boolean success = productService.deleteProduct(prodID);
@@ -63,6 +73,6 @@ public class productController {
     }
 
     public List<Product> getProductList() {
-        return productList;
+        return productService.viewAllProducts();
     }
 }
