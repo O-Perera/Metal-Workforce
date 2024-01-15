@@ -10,19 +10,13 @@ import java.awt.event.ActionListener;
 public class DashboardView extends JFrame {
     private JButton Customerorderbtn;
     private JButton productbtn;
-    private JLabel lblorder;
-    private JLabel lblsuppliers;
-    private JLabel lblproduct;
-    private JLabel lblemployee;
-    private JLabel lblallocating;
-    private JLabel lblreport;
     public JPanel backpanel;
-    public JLabel lblwelcome;
     private JButton Employeebtn;
     private JButton Supplierbtn;
     private JButton allocatingbtn;
     private JButton inventorybtn;
     private JButton reportbtn;
+    public JLabel lblcarecare;
 
 
     public DashboardView() {
@@ -70,6 +64,8 @@ public class DashboardView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+
             }
         });
         inventorybtn.addActionListener(new ActionListener() {
@@ -95,6 +91,7 @@ public class DashboardView extends JFrame {
             ui.setVisible(true);
         }
     }
+
 
 
 
