@@ -10,8 +10,9 @@ import java.awt.event.ActionListener;
 
 public class EmployeeAllocateUI extends JFrame {
     private EmployeeAllocateController controller;
+    private GmailerEmployeeController emailController;
 
-    public JPanel panel1;
+    private JPanel panel1;
     private JLabel empid;
     private JLabel orderid;
 
@@ -20,9 +21,11 @@ public class EmployeeAllocateUI extends JFrame {
 
     private JButton allocate;
 
-    // Parameterized constructor that accepts an EmployeeAllocateController instance
-    public EmployeeAllocateUI(EmployeeAllocateController controller) {
+    // Parameterized constructor that accepts instances of controllers
+    public EmployeeAllocateUI(EmployeeAllocateController controller, GmailerEmployeeController emailController) {
         this.controller = controller;
+        this.emailController = emailController;
+
         setTitle("Employee Allocation");
         setSize(400, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,10 +53,7 @@ public class EmployeeAllocateUI extends JFrame {
         allocate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 allocateEmployeeToJob();
-
-
             }
         });
 
@@ -65,23 +65,33 @@ public class EmployeeAllocateUI extends JFrame {
         String employeeID = txtempid.getText();
         String orderID = txtorderid.getText();
 
-        // Call the controller method to handle the allocation logic with both values
+        // Call the controller method to get employee name and handle the allocation logic with both values
+        String employeeName = controller.getEmployeeNameById(employeeID);
         controller.handleEmployeeAllocation(employeeID, orderID);
-        sendEmail("A new allocation", "Dear Employee, \nEmployee ID: " + employeeID + "\nOrder ID: " + orderID+"\n" +
-                "\n" +
-                "You have been successfully Assigned\n" +
-                "to the order to work on it,\n" +
-                "\n" +
-                "Best Regards,\n" +
-                "CareCare Team");
 
-
-
+        // Use the injected instance of GmailerEmployeeController to send the email
+        sendEmail("You've Been Assigned a New Task!",
+                "Dear " + employeeName + ",\n\n" +
+                        "Congratulations! We're happy to inform you that you have been successfully assigned to a new task:\n" +
+                        "\n" +
+                        "Employee ID: " + employeeID + "\n" +
+                        "Order ID: " + orderID + "\n\n" +
+                        "Details:\n" +
+                        "-----------\n" +
+                        "You have been chosen to contribute your expertise to an exciting project. OrderID: " + orderID+ ". Your dedication and hard work are highly appreciated.\n" +
+                        "\n" +
+                        "What's Next:\n" +
+                        "----------------\n" +
+                        "Get ready to showcase your skills and make a significant impact. Your team is counting on you!\n" +
+                        "\n" +
+                        "Best Regards,\n" +
+                        "CareCare Team");
     }
+
+
     private void sendEmail(String subject, String message) {
         try {
-            // Create an instance of GmailerEmployeeController to send the email
-            GmailerEmployeeController emailController = new GmailerEmployeeController();
+            // Use the injected instance of GmailerEmployeeController
             emailController.sendMail(subject, message);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -93,11 +103,17 @@ public class EmployeeAllocateUI extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                // Instantiate the controller
+                // Instantiate the controllers
                 EmployeeAllocateController controller = new EmployeeAllocateController();
+                GmailerEmployeeController emailController = null;
+                try {
+                    emailController = new GmailerEmployeeController();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
 
-                // Instantiate the UI and pass the controller instance to it
-                EmployeeAllocateUI employeeAllocateUI = new EmployeeAllocateUI(controller);
+                // Instantiate the UI and pass the controller instances to it
+                EmployeeAllocateUI employeeAllocateUI = new EmployeeAllocateUI(controller, emailController);
 
                 // Set the UI visible
                 employeeAllocateUI.setVisible(true);

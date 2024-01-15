@@ -43,7 +43,7 @@ public class GmailerEmployeeController {
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
 
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GmailerEmployeeController.class.getResourceAsStream("/client_secret_959552961938-mbl4md5avvj74m6b3h1boub4mkbg3km1.apps.googleusercontent.com.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GmailerEmployeeController.class.getResourceAsStream("/client_secret_959552961938-vpkekgifd5h6iiuhpdlmje4rgv9dgi4i.apps.googleusercontent.com.json")));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
