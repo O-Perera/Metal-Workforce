@@ -48,7 +48,12 @@ public class  CustomerView extends JFrame {
 
                     if(controller.addCustomerToDatabase(customer)){
                         JOptionPane.showMessageDialog(backPanel, "Added Successfully", "Success", 0);
-
+                        txtId.setText("");
+                        txtName.setText("");
+                        txtEmail.setText("");
+                        txtAddress.setText("");
+                        txtContact.setText("");
+                        txtService.setText("");
                     }else{
                         JOptionPane.showMessageDialog(backPanel, "Cannot Insert Customer", "unsuccessful", 0);
                     }
@@ -76,6 +81,13 @@ public class  CustomerView extends JFrame {
 
                     if(controller.UpdateCustomerInDatabase(customer)){
                         JOptionPane.showMessageDialog(backPanel, "Updated Successfully", "Success", 0);
+                        txtId.setText("");
+                        txtName.setText("");
+                        txtEmail.setText("");
+                        txtAddress.setText("");
+                        txtContact.setText("");
+                        txtService.setText("");
+                        txtOrder.setText("");
                     }else{
                         JOptionPane.showMessageDialog(backPanel, "Cannot Update Customer", "unsuccessful", 0);
                     }
@@ -95,6 +107,7 @@ public class  CustomerView extends JFrame {
 
                     if(controller.deleteCustomerFromDatabase(customer)){
                         JOptionPane.showMessageDialog(backPanel, "Delete Successfully", "Success", 0);
+                        txtOrder.setText("");
                     }else{
                         JOptionPane.showMessageDialog(backPanel, "Delete unsuccessfully", "unsuccessful", 0);
                     }
