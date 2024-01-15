@@ -53,12 +53,60 @@ public class EmployeeAllocateUI extends JFrame {
         allocate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Perform actions when the 'Allocate' button is clicked
+                // You can call the allocateEmployeeToJob method or add specific logic here
                 allocateEmployeeToJob();
+
+                // Show a success message
+                JOptionPane.showMessageDialog(EmployeeAllocateUI.this,
+                        "Employee ID and Order ID added successfully",
+                        "Success", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
+
         // Add the panel to the frame
         add(panel1);
+        txtempid.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Try to parse the content of txtempid to an integer
+                    int employeeID = Integer.parseInt(txtempid.getText());
+
+                    // If successful, you can proceed with your logic
+                    // For example, you can display a success message
+                    System.out.println("Employee ID is an integer: " + employeeID);
+                } catch (NumberFormatException ex) {
+                    // If an exception occurs, the content is not an integer
+                    // Display an error message
+                    JOptionPane.showMessageDialog(EmployeeAllocateUI.this,
+                            "Check your Employee ID. It should be an integer.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        txtorderid.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Try to parse the content of txtorderid to an integer
+                    int orderID = Integer.parseInt(txtorderid.getText());
+
+                    // If successful, you can proceed with your logic
+                    // For example, you can display a success message
+                    System.out.println("Order ID is an integer: " + orderID);
+                } catch (NumberFormatException ex) {
+                    // If an exception occurs, the content is not an integer
+                    // Display an error message
+                    JOptionPane.showMessageDialog(EmployeeAllocateUI.this,
+                            "Check your Order ID. It should be an integer.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
     }
 
     private void allocateEmployeeToJob() {
