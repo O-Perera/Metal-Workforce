@@ -1,5 +1,7 @@
 package Views.DashBoard;
 
+import Controllers.EmployeeAllocateController;
+import Controllers.GmailerEmployeeController;
 import Views.AllocaterView.EmployeeAllocateUI;
 import Views.CustomerView;
 import Views.SupplierView.supplierview;
@@ -71,16 +73,24 @@ public class DashboardView extends JFrame {
         allocatingbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EmployeeAllocateUI empview=new EmployeeAllocateUI();
+                // Assuming you have instances of EmployeeAllocateController and GmailerEmployeeController
+                EmployeeAllocateController employeeController = new EmployeeAllocateController();
+                GmailerEmployeeController emailController = null;
+                try {
+                    emailController = new GmailerEmployeeController();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                EmployeeAllocateUI empview = new EmployeeAllocateUI(employeeController, emailController);
                 empview.setContentPane(empview.panelemp);
                 empview.setTitle("Employee Allocator application");
-                empview.setSize(600,600);
+                empview.setSize(400, 200);
                 empview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 empview.setVisible(true);
-
-
             }
         });
+
         inventorybtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
