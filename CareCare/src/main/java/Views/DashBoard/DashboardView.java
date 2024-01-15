@@ -1,8 +1,11 @@
 package Views.DashBoard;
 
+import Controllers.EmployeeAllocateController;
+import Controllers.GmailerEmployeeController;
 import Views.AllocaterView.EmployeeAllocateUI;
 import Views.CustomerView;
 import Views.SupplierView.supplierview;
+import Views.inventoryManagementView.inventoryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -52,6 +55,12 @@ public class DashboardView extends JFrame {
         inventorybtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                inventoryView inventoryView=new inventoryView();
+                inventoryView.setContentPane(inventoryView.panel1);
+                inventoryView.setTitle("Inventory Application");
+                inventoryView.setSize(600,600);
+                inventoryView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                inventoryView.setVisible(true);
 
             }
         });
@@ -64,16 +73,24 @@ public class DashboardView extends JFrame {
         allocatingbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EmployeeAllocateUI empview=new EmployeeAllocateUI();
+                // Assuming you have instances of EmployeeAllocateController and GmailerEmployeeController
+                EmployeeAllocateController employeeController = new EmployeeAllocateController();
+                GmailerEmployeeController emailController = null;
+                try {
+                    emailController = new GmailerEmployeeController();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                EmployeeAllocateUI empview = new EmployeeAllocateUI(employeeController, emailController);
                 empview.setContentPane(empview.panelemp);
-                empview.setTitle("supplier application");
-                empview.setSize(600,600);
+                empview.setTitle("Employee Allocator application");
+                empview.setSize(400, 200);
                 empview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 empview.setVisible(true);
-
-
             }
         });
+
         inventorybtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
